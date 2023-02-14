@@ -1,0 +1,115 @@
+<!-- open folder
+add file index.html
+>html:5 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- ctr+k+c to comment -->
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPMP</title>
+    <script> 
+        console.log("hello world dentro de consola");
+        let suma = 2+3;
+        let array = [1,2,3,4,5]
+        array.map((variable) => {console.log(variable)});
+        console.log(suma);
+    </script>
+</head>
+<body>
+    <!-- <h1> jijijaja </h1>
+    <h2> sus </h2>
+    <p> etiqueta jiji jaja</p>
+    <button> this is a button </button> -->
+
+    <!-- you can also have a div inside a div -->
+    <div style="background-color: black;
+        position: relative;
+        width: 270px;
+        height: 60px">     
+        <p style="color: black;">____</p>
+    </div>
+    <div style="background-color: red;
+        top: 75px;
+        position: absolute;
+        width: 270px;
+        height: 60px;">
+        <p style="color: red;">____</p>   
+    </div>         
+    <div style="background-color: yellow;
+        top: 135px;
+        position: absolute;
+        width: 270px;
+        height: 60px;">
+        <p style="color: yellow;">____</p>   
+    </div>
+
+    <div style="background-color: black;
+        float:left;
+        position: relative;
+        top: 200px;
+        width: 90px;
+        height: 180px">     
+        <p style="color: black;">____</p>
+    </div>
+    <div style="background-color: red;
+        float: left;
+        top: 200px;
+        position: relative;
+        width: 90px;
+        height: 180px;">
+        <p style="color: red;">____</p>   
+    </div>         
+    <div style="background-color: yellow;
+        float: left;
+        top: 200px;
+        position: relative;
+        width: 90px;
+        height: 180px;">
+        <p style="color: yellow;">____</p>   
+    </div>
+
+    <div style="background-color: skyblue;
+        top: 600px;
+        position: absolute;
+        width: 270px;
+        height: 60px">     
+        <p style="color: skyblue;">____</p>
+    </div>
+    <div style="background-color: white;
+        top: 660px;
+        position: absolute;
+        width: 270px;
+        height: 60px;">
+        <p style="color: white;">____</p>   
+    </div>         
+    <div style="background-color: skyblue;
+        top: 720px;
+        position: absolute;
+        width: 270px;
+        height: 60px;">
+        <p style="color: skyblue;">____</p>   
+    </div>
+
+
+    <div style="background-color: yellow;
+        top: 10px;
+        left: 10px;
+        /* this will let us move the thing from the browser */
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        float: left;
+        border-radius: 100%;">
+        <p style="color: yellow;">____</p>  
+
+    </div>
+</body>
+</html>
+<!-- 
+ctrl ñ to access terminal
+git init
+git add -a
+git commit -am "comment" -->

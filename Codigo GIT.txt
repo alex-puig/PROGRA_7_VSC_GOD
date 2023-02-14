@@ -1,0 +1,17 @@
+Linux tolback: Le encantaba Linux y me daba hueva programar.
+
+git add -A
+git commit -am "texto"
+
+
+git push #mandar
+
+git pull. #jalar
+
+cd C:\Users\cuiqu\Documents\UNI\PROGRA_VSC
+mkdir PrograWeb7
+cd PrograWeb7
+
+git init
+code .
+

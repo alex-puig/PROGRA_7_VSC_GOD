@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+
+
+        function change_colorRed(){
+            const div1 = document.getElementById("div1");
+            let color = "red";
+            let div_color = div1.style.backgroundColor;
+            if( color != div_color){
+                div1.style.backgroundColor = "red";
+
+            }
+        }
+
+        function new_Color_2(){
+            const div2 = document.getElementById("div2");
+            div2.style.backgroundColor = "blue";
+        }
+
+        function new_Color_3(){
+            const div3 = document.getElementById("div3");
+            div3.style.backgroundColor = "orange";
+        }
+
+
+        function showDiv  (){
+            console.log("Ocultar D:");
+            const div2 = document.getElementById("div2");
+            const button2 = document.getElementById("button2")
+            // propiedad equals, para comparar
+            // diferencia entre 2 iguales y 3, es que si le pongo "None" puede que lo acepte, pero no funcione bien
+            //no va a pedir que coincida exactamente, te da chance que no sea el mismo objeto, tiene que ser exactamente igual en el ===
+            if(div2.style.display === "none"){
+                div2.style.display ="block";
+                button2.innerText = "hide div";
+            }else{
+                div2.style.display= "none";
+                button2.innerText = "show div";
+
+            }
+            console.log("fin");
+        }
+
+        function changeColor(){
+
+    
+            console.log("ChangeColor");
+
+            // tipos de variables
+            // const myconst = () => {}
+            
+            // Declarar constante 
+            const myconst = 3
+
+            // Definir variables
+            // cambia el alcance de variable
+            // var dentro del bloque de código
+            // let dentro de la función en la que se esté declarando
+
+            // la var ya no se utiliza B)
+            // usa let chinga unu 
+
+            let var1;
+            var var2;
+
+            // dom = arbol de etiquetas que te usan en forma de nodos; esqueleto de html BD
+            //    Así se declara el dom :D
+
+            // Aqui se meten atrubutos desde JS :D
+            const div1 = document.getElementById("div1");
+            const div2 = document.getElementById("div2");
+    
+
+            // Breakpoints :D
+
+            //cambia color?? esto pa qué jajaj
+            // es para que mario ya no sea normal y sea blanco y rojo :D
+            div1.style.backgroundColor = "green";
+
+                
+
+        }
+    </script>
+
+
+    <style>
+
+    #div1{
+        background-color: red;
+        height: 100px;
+        width: 100px;
+        float: left;
+        position: relative;
+    }
+
+    #div2{
+        background-color: black;
+        height: 100px;
+        width: 100px;
+        float: left;
+        position: relative;
+    }
+
+    #div3{
+        background-color: blue;
+        height: 100px;
+        width: 100px;
+        float: left;
+        position: relative;
+    }
+
+    #div4{
+        background-color: greenyellow;
+        height: 200px;
+        width: 200px;
+        float: left;
+        position: relative;
+
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="div1">   </div>
+
+    <div id="div2">   </div>
+    
+    <div id = "div3">   </div>
+
+    <div id="div4"> 
+    
+        <button id ="button1" onclick="changeColor()"> click me!</button>  
+        <button id ="button2" onclick="showDiv()"> Hide me!</button>    
+
+        <button id ="button3" onclick="change_colorRed()"> change red_C</button>    
+        <button id = "button4" onclick="new_Color_2()"> change second </button>
+        <button id = "button5" onclick="new_Color_3()"> change third </button>
+
+
+  
+    
+    </div>
+
+    
+</body>
+</html>

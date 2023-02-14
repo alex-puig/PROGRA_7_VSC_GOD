@@ -1,0 +1,56 @@
+.container{
+    display: grid;
+    background-color: dodgerblue;
+    width: 96%;
+    height: 500px;
+    padding: 15px;
+    grid-template-columns: 33% 33% 33%;
+
+}
+
+.item_a{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
+    background-color: dodgerblue;
+    border: #000 1px solid;
+}
+
+
+.item_b{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto;;
+    background-color: dodgerblue;
+}
+
+
+
+
+.item_c{
+    display: grid;
+    background-color: orange;
+    width: 66%;
+    height: 70%;
+    padding: 5px;
+    border-radius: 5%;
+    border: #000  3px solid;
+    font-size: 90px;
+
+    justify-self: center;
+    text-align: center;
+    place-content: center;
+    align-self: center;
+    align-content: center;
+    box-shadow: 10px 10px;
+
+
+}
+
+.item_d{
+    font-size: 90px;
+    justify-self: center;
+    text-align: center;
+    place-self: center;
+
+}
