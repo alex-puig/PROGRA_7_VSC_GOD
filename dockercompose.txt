@@ -1,0 +1,4 @@
+#docker compose -f "docker-compose.yml" upd -d --build
+#or right click > compose up
+
+#mysql -u root -p
