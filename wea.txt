@@ -1,0 +1,40 @@
+maninthemiddle
+
+funciones anonimas/arrow func
+	No tienen nombre XD
+
+
+java script: function helloWorld(){
+	def __ini__(self, name:str, color:str)-> int:
+		sadkñaslkdlñas
+}
+
+
+hay funciones que también reciben como parametro una función, sino la quiero declarar le mando una función 
+anonima
+
+.then((result) => {
+    asdlakdlñad
+    }); 
+
+BD
+
+def hello_world(valor1) -> bool
+
+¿promesas? pipipipipipi
+
+
+
+
+/////////////
+
+
+(param1) =>{
+
+}
+
+==
+
+parm1 =>console.log()
+
+////////////

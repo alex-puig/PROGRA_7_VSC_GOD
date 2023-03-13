@@ -1,3 +1,8 @@
+//Como crear un servidor node.js B)
+
+
+
+
 const { json } = require('express');
 var express = require('express');
 var app = express();
@@ -67,7 +72,7 @@ app.get('/array', function(req,res){
     res.json(arrayCars);
 });
 
-app.get
+
 
 
 

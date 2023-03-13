@@ -1,0 +1,19 @@
+DOCU DE REQUERIMIENTOS
+
+portada
+control de versiones
+	revisiones y aprobaciones(quien lo hizo, fecha, revisado por, fecha, aprobado por, fecha)
+	control de versiones (no. de version, seccion modificada, detalle dl cambio, realizado por, revisado por, fecha)
+tabla de contenido
+1. GENERALIDADES DEL PROYECTO
+	información del proyecto (nombre cliente, nombre proyecto, fase del proyecto)
+	solicitante (nombre y área)
+	identificacion de unidades y responsables de parte del cliente (nombre, cargo/unidad, función dentro del proyecto, info de contacto)
+	necesidades del negocio
+	alcance del proyecto
+2. PROCESO DE NEGOCIO ASOCIADO Y FUNCIONALIDAD REQUERIDA
+	propuesta de solución
+		describe qué hacer, funcionalidades requeridas, mockup, diagrama de flujo de interaccion con interfaz
+3. DECLARACIÓN DE ACEPTACIÓN DE PROPUESTA DE MODELACIÓN
+	trae un texto sus, lugar pa firmar
+		
