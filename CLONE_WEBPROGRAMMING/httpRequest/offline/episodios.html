@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/boostrap.min.css" rel="stylesheet">
+ 
+    <title>Document</title>
+</head>
+<body>
+    <div class="container text-center">  
+        <div class="row">
+            <h1>Episode</h1>
+          <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Info</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+              </table>
+          </div>         
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h2>Info</h2>
+              <div class="card" style="width: 18rem;" id="CardComponent">
+                  <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Id: </li>
+                  <li class="list-group-item">Name: </li>
+                  <li class="list-group-item">Type: </li>
+                  <li class="list-group-item">Sprite: </li>
+                </ul> 
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+
+fetch("https://pokeapi.co/api/v2/pokemon/", requestOptions)
+  .then(response => response.text())
+  .then((result) => {
+    console.log(result);
+    var datos = JSON.parse(result);
+
+    datos.results.map((item)=> {
+      fetch("https://pokeapi.co/api/v2/pokemon/"+item.name, requestOptions) 
+      .then(response2 => response2.text())
+      .then((result2) => {
+        datos = JSON.parse(result2);
+
+        
+        document.getElementById("tableBody").innerHTML += `
+                <tr>
+                    <th scope="row">`+datos.id+`</th>
+                    <td>`+datos.name+`</td>
+                    <td>`+datos.types[0].type.name +`</td>
+                    
+                    <td>
+                        <button onclick="getEpisodieDetails(`+ datos.id + `)" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Info
+                          </button>
+                    </td>
+                </tr>
+        `;
+      });
+    });
+    })
+
+  .catch(error => console.log('error', error));
+      </script>
+      <script>
+
+        function getEpisodieDetails(name){
+          var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+          };
+          _url = 'https://pokeapi.co/api/v2/pokemon/'+name;
+          fetch(_url, requestOptions)
+            .then(response => response.text())
+            .then((result) => {
+              var datos = JSON.parse(result);
+              document.getElementById("CardComponent").innerHTML = `
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Id: `+datos.id+` </li>
+                  <li class="list-group-item">Name: `+datos.name+` </li>
+                  <li class="list-group-item">Type: `+datos.types[0].type.name+` </li>
+                  <li class="list-group-item">Sprite: 
+                    <img src="`+datos.sprites.front_shiny +`" class="card-img-top" alt="...">
+                    </li>
+                </ul>
+              
+              `;
+            
+            })
+            .catch(error => console.log('error', error));
+        }
+
+
+      </script>
+
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
