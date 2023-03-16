@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--links para que funcione-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="css/boostrap.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
-    <div class="container text-center">  
+    <!--inicia tabla-->
+    <div class="container text-center"> 
+            <!-- imagen para el encabezado--> 
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png" alt="alternatetext" width="100%">
             <table class="table table-hover">
                 <thead class ="thead-dark">
@@ -20,12 +24,13 @@
                     <th scope="col">Info</th>
                   </tr>
                 </thead>
+                <!--todo los datos que va a sacar de getElementById("tablebody") entran acá-->
                 <tbody id="tableBody">
                 </tbody>
               </table>      
     </div>
 
-
+      <!-- el modal es básicamente un popup-->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -35,6 +40,7 @@
             </div>
             <div class="modal-body">
               <h2 style = "text-align: center;">Info</h2>
+              <!--aquí es donde va a meter todo lo de get episodie details-->
               <div class="card text-center"  id="CardComponent">
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item">Id: </li>
@@ -52,98 +58,106 @@
       </div>
       <script>
 
-var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
+  var requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+  };
 
-var contador = 0;
-fetch("https://pokeapi.co/api/v2/pokemon/?limit=150.", requestOptions)
-  .then(response => response.text())
-  .then((result) => {
-    console.log(result);
-    var datos = JSON.parse(result);
+  //usamos el contador para llamar cada pokemon
+  var contador = 0;
 
-    datos.results.map((item)=> {
-      fetch("https://pokeapi.co/api/v2/pokemon/"+item.name, requestOptions) 
-      .then(response2 => response2.text())
-      .then((result2) => {
-        datos = JSON.parse(result2);
-        contador += 1;
+  //pedimos los primeros 150 pokemones
+  fetch("https://pokeapi.co/api/v2/pokemon/?limit=150.", requestOptions)
+    .then(response => response.text())
+    .then((result) => {
+      console.log(result);
+      var datos = JSON.parse(result); 
+      //agrega los datos obtenidos, pero no incluye toda la info, por lo que tenemos que hacer un map
+      //para obtener la info uno por uno
 
-        
-        document.getElementById("tableBody").innerHTML += `
-                <tr>
-                    <th scope="col">`+datos.id+`</th>
-                    <td scope = "col">`+datos.name+`</td>
-                    <td scope = "col">`+datos.types[0].type.name +`</td>
-                    <td scope = "col">
-                        <button onclick="getEpisodieDetails(`+ contador + `)" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style = "background-image: url('https://www.pngitem.com/pimgs/m/604-6046515_pokeball-pixel-art-png-transparent-png.png'); background-size: cover; width: 40px ; height: 40px; ">
-                        </button>
-                    </td>
-                </tr>
-        `;
+      datos.results.map((item)=> {
+        fetch("https://pokeapi.co/api/v2/pokemon/"+item.name, requestOptions) 
+        .then(response2 => response2.text())
+        .then((result2) => {
+          datos = JSON.parse(result2);
+          contador += 1;
+          //agrega los datos que vamos obteniendo a la tabla          
+          document.getElementById("tableBody").innerHTML += `
+                  <tr>
+                      <th scope="col">`+datos.id+`</th>
+                      <td scope = "col">`+datos.name+`</td>
+                      <td scope = "col">`+datos.types[0].type.name +`</td>
+                      <td scope = "col">
+                          <button onclick="getEpisodieDetails(`+ contador + `)" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style = "background-image: url('https://www.pngitem.com/pimgs/m/604-6046515_pokeball-pixel-art-png-transparent-png.png'); background-size: cover; width: 40px ; height: 40px; ">
+                          </button>
+                      </td>
+                  </tr>
+          `;
+          //el button onclick llama al modal, con la info que obtiene de episodiedetails para mostrar cada pokemon
+        });
       });
-    });
-    })
+      })
 
-  .catch(error => console.log('error', error));
-      </script>
-      <script>
+    .catch(error => console.log('error', error));
+        </script>
+        <script>
 
-        function getEpisodieDetails(contador){
-          var requestOptions = {
-          method: 'GET',
-          redirect: 'follow'
-          };
-          _url = 'https://pokeapi.co/api/v2/pokemon/'+contador;
-          fetch(_url, requestOptions)
-            .then(response => response.text())
-            .then((result) => {
-              var datos = JSON.parse(result);
-              document.getElementById("CardComponent").innerHTML = `
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Id: `+contador+` </li>
-                  <li class="list-group-item">Name: `+datos.name+` </li>
-                  <li class="list-group-item">Type: `+datos.types[0].type.name+` </li>
-                  <li class="list-group-item list-group-item-dark">
-                    <h5>Sprite</h5> 
-                  </li>
-                  <li class="list-group-item">
-                    <div class = "container">
-                      <div class = "row">
-                        <div class = "col">
-                          <p>Default: </p>
-                          <img src="`+datos.sprites.front_default +`" class="card-img-top" alt="...">
+          function getEpisodieDetails(contador){
+            var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+            };
+            //la url de cada pokemón, aquí se usa el contador para encontrar el pokemon en la api
+            _url = 'https://pokeapi.co/api/v2/pokemon/'+contador;
+            fetch(_url, requestOptions)
+              .then(response => response.text())
+              .then((result) => {
+                var datos = JSON.parse(result);
+
+                //igual que con la tabla, va metiendo cada uno en el modal
+                document.getElementById("CardComponent").innerHTML = `
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Id: `+contador+` </li>
+                    <li class="list-group-item">Name: `+datos.name+` </li>
+                    <li class="list-group-item">Type: `+datos.types[0].type.name+` </li>
+                    <li class="list-group-item list-group-item-dark">
+                      <h5>Sprite</h5> 
+                    </li>
+                    <li class="list-group-item">
+                      <div class = "container">
+                        <div class = "row">
+                          <div class = "col">
+                            <p>Default: </p>
+                            <img src="`+datos.sprites.front_default +`" class="card-img-top" alt="...">
+                          </div>
+                          <div class = "col">
+                            <p>Shiny: </p>
+                            <img src="`+datos.sprites.front_shiny +`" class="card-img-top" alt="...">
+                          </div>
                         </div>
-                        <div class = "col">
-                          <p>Shiny: </p>
-                          <img src="`+datos.sprites.front_shiny +`" class="card-img-top" alt="...">
+
+                        <div class = "row">
+                          <div class = "col">
+                            <img src="`+datos.sprites.back_default +`" class="card-img-top" alt="...">
+                          </div>
+                          <div class = "col">
+                            <img src="`+datos.sprites.back_shiny +`" class="card-img-top" alt="...">
+                          </div>
                         </div>
                       </div>
-
-                      <div class = "row">
-                        <div class = "col">
-                          <img src="`+datos.sprites.back_default +`" class="card-img-top" alt="...">
-                        </div>
-                        <div class = "col">
-                          <img src="`+datos.sprites.back_shiny +`" class="card-img-top" alt="...">
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                    </li>
+                  </ul>
+                
+                `;
               
-              `;
-            
-            })
-            .catch(error => console.log('error', error));
-        }
+              })
+              .catch(error => console.log('error', error));
+          }
 
 
-      </script>
+        </script>
 
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
