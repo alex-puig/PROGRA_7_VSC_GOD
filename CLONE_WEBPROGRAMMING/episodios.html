@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--- aqui tan los links necesarios -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="css/boostrap.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
+    
 <body>
-    <div class="container text-center">  
+    <div class="container text-center">
+            <!-- el link pal encabezado -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png" alt="alternatetext" width="100%">
+            <!-- empieza la tabla B) -->
             <table class="table table-hover">
                 <thead class ="thead-dark">
                   <tr>
@@ -20,12 +24,13 @@
                     <th scope="col">Info</th>
                   </tr>
                 </thead>
+                <!-- en tableBody viene toda la info -->
                 <tbody id="tableBody">
                 </tbody>
               </table>      
     </div>
 
-
+      <!-- aquí empieza el modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -58,12 +63,14 @@ var requestOptions = {
 };
 
 var contador = 0;
+<!-- aquí le pido a la api que me mande los primeros 150 B) -->
 fetch("https://pokeapi.co/api/v2/pokemon/?limit=150.", requestOptions)
   .then(response => response.text())
   .then((result) => {
     console.log(result);
     var datos = JSON.parse(result);
-
+    
+<!-- va sacando la info de cada pokemon B) -->
     datos.results.map((item)=> {
       fetch("https://pokeapi.co/api/v2/pokemon/"+item.name, requestOptions) 
       .then(response2 => response2.text())
@@ -139,10 +146,7 @@ fetch("https://pokeapi.co/api/v2/pokemon/?limit=150.", requestOptions)
             })
             .catch(error => console.log('error', error));
         }
-
-
       </script>
-
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
